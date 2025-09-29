@@ -1,0 +1,44 @@
+class LibraryItem {
+    int id;
+    String title;
+    boolean available;
+
+    LibraryItem(int id, String title){
+        this.id=id;
+        this.title=title;
+        this.available=true;
+    }
+}
+
+class Book extends LibraryItem {
+    Book(int id, String title){
+        super(id,title);
+    }
+
+    void checkout(){
+        if(available){
+            available=false;
+            System.out.println("Book Checked Out");
+        } else System.out.println("Already checked out");
+    }
+
+    void returnBook(){
+        available=true;
+        System.out.println("Book Returned");
+    }
+
+    void display(){
+        System.out.println(id+" - "+title+" Available:"+available);
+    }
+}
+
+public class E5_Library {
+    public static void main(String[] args) {
+        Book b = new Book(1,"Java");
+        b.display();
+        b.checkout();
+        b.display();
+        b.returnBook();
+        b.display();
+    }
+}
